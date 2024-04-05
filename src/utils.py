@@ -1,6 +1,8 @@
-import datetime
 from pathlib import Path
 
+import flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+import  sqlalchemy as sa
 import pytz
 
 
@@ -20,6 +22,15 @@ def existe_esquema(app) -> bool:
     # ajustar o env.py
     #   from src.modules import Base
     #   target_metadata = Base.metada
+def seeding_db(db: SQLAlchemy):
+    from src.models.usuario import User
+
+
+    sentenca = sa.select(User).Limit(1)
+    rset = db.session.execute(sentenca).scalar_one_or_none()
+    if rset is not None:
+        usuario = User()
+        usuario.nome = "Administrador do sistema"
 
 
 def timestamp():
