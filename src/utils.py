@@ -1,9 +1,10 @@
 from pathlib import Path
 
-import flask import Flask
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import  sqlalchemy as sa
+import sqlalchemy as sa
 import pytz
+import datetime
 
 
 def existe_esquema(app) -> bool:
@@ -31,6 +32,7 @@ def seeding_db(db: SQLAlchemy):
     if rset is not None:
         usuario = User()
         usuario.nome = "Administrador do sistema"
+
 
 
 def timestamp():
